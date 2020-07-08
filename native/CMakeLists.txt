@@ -1,0 +1,27 @@
+PROJECT(template)
+
+
+
+FIND_PACKAGE(TIFF)
+
+# find IPP include dir
+FIND_PATH( IPP_INCLUDE_DIR $ENV{IPP_INCLUDE_DIR} [DOC "IPP include path"])
+
+# find IPP include dir
+FIND_PATH( IPP_LIBRARY_DIR $ENV{IPP_LIBRARY_DIR} [DOC "IPP library path"])
+
+# find Open CV
+FIND_PACKAGE( OpenCV REQUIRED PATHS ${OPENCV_INSTALL_DIR})
+
+INCLUDE_DIRECTORIES( ${OpenCV_INCLUDE_DIRS} ${IPP_INCLUDE_DIR})
+
+LINK_DIRECTORIES(${IPP_LIBRARY_DIR})
+
+ADD_EXECUTABLE(test src/test.cpp src/tifstack.cpp src/debugutil.cpp)
+
+TARGET_LINK_LIBRARIES(test ${TIFF_LIBRARIES} ${OpenCV_LIBS} ipps)
+ 
+
+
+
+  

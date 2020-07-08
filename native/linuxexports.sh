@@ -1,0 +1,1 @@
+export LD_LIBRARY_PATH="/opt/intel/ipp/lib/intel64/:$LD_LIBRARY_PATH"
